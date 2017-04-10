@@ -27,7 +27,7 @@ IUSE="acl apparmor audit build cryptsetup curl doc elfutils +gcrypt gnuefi http
 
 REQUIRED_USE="importd? ( curl gcrypt lzma )"
 
-MINKV="3.11"
+MINKV="3.13"
 
 COMMON_DEPEND=">=sys-apps/util-linux-2.27.1:0=[${MULTILIB_USEDEP}]
 	sys-libs/libcap:0=[${MULTILIB_USEDEP}]
@@ -108,7 +108,7 @@ python_check_deps() {
 pkg_pretend() {
 	local CONFIG_CHECK="~AUTOFS4_FS ~BLK_DEV_BSG ~CGROUPS
 		~CHECKPOINT_RESTORE ~DEVTMPFS ~DMIID ~EPOLL ~FANOTIFY ~FHANDLE
-		~INOTIFY_USER ~IPV6 ~NET ~NET_NS ~PROC_FS ~SIGNALFD ~SYSFS
+		~INOTIFY_USER ~IPV6 ~NET ~NET_NS ~USER_NS ~PROC_FS ~SIGNALFD ~SYSFS
 		~TIMERFD ~TMPFS_XATTR ~UNIX
 		~CRYPTO_HMAC ~CRYPTO_SHA256 ~CRYPTO_USER_API_HASH
 		~!FW_LOADER_USER_HELPER ~!GRKERNSEC_PROC ~!IDE ~!SYSFS_DEPRECATED
@@ -222,8 +222,10 @@ multilib_src_configure() {
 		$(use_enable ima)
 		$(use_enable smack)
 
+
 		# Optional components/dependencies
 		$(multilib_native_use_enable acl)
+
 		$(multilib_native_use_enable apparmor)
 		$(multilib_native_use_enable audit)
 		$(multilib_native_use_enable cryptsetup libcryptsetup)
@@ -347,6 +349,12 @@ multilib_src_install_all() {
 		rm "${D}"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8 \
 			|| die
 		rm "${D}"/usr/share/man/man1/init.1 || die
+	fi
+
+	# By Nirvandil: if disable ACL support, remove orphaned 73-seat-late.rules \
+	# file to avoid "'uaccess' unknown /usr/lib64/udev/rules.d/73-seat-late.rules"
+	if ! use acl; then
+		rm -f "${D}"/lib/udev/rules.d/73-seat-late.rules || die "couldn't disable 73-seat-late.rules"
 	fi
 
 	# Preserve empty dirs in /etc & /var, bug #437008
