@@ -12,7 +12,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="kde-plasma/plasma-workspace"
+DEPEND="kde-plasma/plasma-workspace
+x11-misc/sddm"
 RDEPEND="${DEPEND}"
 src_install() {
 	dodir /usr/share/sddm/themes/breeze-dark
