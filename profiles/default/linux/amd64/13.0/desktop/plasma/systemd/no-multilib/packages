@@ -1,0 +1,3 @@
+# 25.04.2017 Vladimir Sukharev <nirvandil@gmail.com>
+# No need for OpenRC with this profile
+-*sys-apps/openrc
