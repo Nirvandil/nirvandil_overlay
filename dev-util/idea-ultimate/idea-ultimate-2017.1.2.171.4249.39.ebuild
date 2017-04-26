@@ -69,7 +69,10 @@ src_install() {
 
 	if use custom-jdk; then
 		if [[ -d jre ]]; then
-		fperms 755 "${dir}"/jre/bin/{java,jjs,keytool,orbd,pack200,policytool,rmid,rmiregistry,servertool,tnameserv,unpack200}
+		fperms 755 "${dir}"/jre/bin/{java,jjs,keytool,orbd,pack200,policytool,rmid,rmiregistry,servertool,tnameserv,unpack200} || die 
+		fi
+		if [[ -d jre64 ]]; then
+		fperms 755 "${dir}"/jre64/bin/{java,jjs,keytool,orbd,pack200,policytool,rmid,rmiregistry,servertool,tnameserv,unpack200} || die
 		fi
 	fi
 
