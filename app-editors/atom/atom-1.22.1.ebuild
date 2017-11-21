@@ -13,8 +13,8 @@ DESCRIPTION="A hackable text editor for the 21st Century"
 HOMEPAGE="https://atom.io"
 MY_PV="${PV//_/-}"
 
-ELECTRON_V=1.6.9
-ELECTRON_SLOT=1.6
+ELECTRON_V=1.7.9
+ELECTRON_SLOT=1.7
 
 ASAR_V=0.13.0
 # All binary packages depend on this
