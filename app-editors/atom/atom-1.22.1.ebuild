@@ -13,7 +13,7 @@ DESCRIPTION="A hackable text editor for the 21st Century"
 HOMEPAGE="https://atom.io"
 MY_PV="${PV//_/-}"
 
-ELECTRON_V=1.6.15
+ELECTRON_V=1.6.11-r1
 ELECTRON_SLOT=1.6
 
 ASAR_V=0.13.0
