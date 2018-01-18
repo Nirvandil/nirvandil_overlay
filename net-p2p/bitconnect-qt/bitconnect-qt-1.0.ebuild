@@ -4,7 +4,7 @@
 EAPI=6
 inherit desktop
 
-DESCRIPTION="Oficial BitConnect coin (BCC) wallet."
+DESCRIPTION="Official BitConnect coin (BCC) wallet."
 HOMEPAGE="https://bitconnect.co"
 SRC_URI="https://github.com/bitconnectcoin/bitconnectcoin/raw/master/setup/bitconnect-linux-wallet/Bitconnect-Ubuntu16-64bit.tar"
 
