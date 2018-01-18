@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+inherit desktop
 
 DESCRIPTION="Oficial BitConnect coin (BCC) wallet."
 HOMEPAGE="https://bitconnect.co"
@@ -19,7 +20,8 @@ DEPEND=">=dev-libs/boost-1.32
 dev-qt/qtgui"
 RDEPEND="${DEPEND}"
 src_install() {
+	sed -i 's!/icons/bitconnect.png!/icons/breeze/scalable/apps/bitconnect.png!' Bitconnectcoin.desktop
 	dobin bitconnect-qt
-	doicon bitconnect.png
-	domenu Bitconnectcoin.desktop
+	doicon -t breeze -s scalable bitconnect.png
+	newmenu Bitconnectcoin.desktop BitConnect.desktop
 }
