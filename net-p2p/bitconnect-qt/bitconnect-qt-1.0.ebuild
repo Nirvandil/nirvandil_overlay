@@ -20,8 +20,10 @@ DEPEND=">=dev-libs/boost-1.32
 dev-qt/qtgui"
 RDEPEND="${DEPEND}"
 src_install() {
-	sed -i 's!/icons/bitconnect.png!/icons/breeze/scalable/apps/bitconnect.png!' Bitconnectcoin.desktop
+	sed -i 's!/icons/bitconnect.png!/pixmaps/bitconnect.png!' Bitconnectcoin.desktop
+	echo "Categories=Office;Finance;P2P;Network;Qt;" >> Bitconnectcoin.desktop
 	dobin bitconnect-qt
-	doicon -t breeze -s scalable bitconnect.png
+	insinto /usr/share/pixmaps
+	doicon bitconnect.png
 	newmenu Bitconnectcoin.desktop BitConnect.desktop
 }
