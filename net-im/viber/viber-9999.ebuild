@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=""
+DEPEND="dev-libs/openssl:1.0.0"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
