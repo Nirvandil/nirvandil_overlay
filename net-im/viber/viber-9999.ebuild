@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-libs/openssl:1.0.0"
+DEPEND="dev-libs/openssl:0/3"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
@@ -22,14 +22,14 @@ RESTRICT="strip"
 S=${WORKDIR}
 
 src_unpack(){
-  rpm_unpack viber.rpm
+	rpm_unpack viber.rpm
 }
 src_install(){
-  dodir "opt/${PN}"
-  doins -r opt
-  dosym /opt/${PN}/Viber /usr/bin/Viber
-  doicon "${S}/usr/share/pixmaps/viber.png"
-  fperms 0755 /opt/${PN}/Viber
-  fperms 0755 /opt/${PN}/QtWebEngineProcess
-  make_desktop_entry Viber Viber viber Network
+	dodir "opt/${PN}"
+	doins -r opt
+	dosym /opt/${PN}/Viber /usr/bin/Viber
+	doicon "${S}/usr/share/pixmaps/viber.png"
+	fperms 0755 /opt/${PN}/Viber
+	fperms 0755 /opt/${PN}/QtWebEngineProcess
+	make_desktop_entry Viber Viber viber Network
 }
